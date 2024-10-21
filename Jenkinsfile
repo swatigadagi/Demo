@@ -14,6 +14,7 @@ pipeline {
         stage('Build Application') {
             steps {
                 script {
+                    sh 'pwd'
                     // Run Maven to build the project
                     sh 'mvn clean package'
                 }
