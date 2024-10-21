@@ -1,7 +1,7 @@
 pipeline {
     agent any
     environment {
-        M2_HOME='/opt/apache-maven-3.9.5'
+        M2_HOME='/apache-maven-3.9.5'
         PATH="$M2_HOME/bin:$PATH"
         GIT_REPO = 'https://github.com/swatigadagi/Demo.git' // Change to your Git repository URL
         DEPLOY_DIR = '/home/ubuntu' // Path to deploy WAR file (e.g., Tomcat webapps directory)
