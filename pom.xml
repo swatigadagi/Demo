@@ -9,12 +9,7 @@
     <packaging>jar</packaging>
 
     <dependencies>
-        <dependency>
-            <groupId>javax.servlet</groupId>
-            <artifactId>javax.servlet-api</artifactId>
-            <version>4.0.1</version>
-            <scope>provided</scope>
-        </dependency>
+        <!-- Add any dependencies you need here -->
     </dependencies>
 
     <build>
@@ -28,16 +23,15 @@
                     <target>1.8</target>
                 </configuration>
             </plugin>
-            <!-- Add a plugin for executing the jar -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-jar-plugin</artifactId>
-                <version>3.2.0</version>
+                <version>3.1.0</version>
                 <configuration>
                     <archive>
                         <manifest>
                             <addClasspath>true</addClasspath>
-                            <mainClass>com.example.HelloWorldServer</mainClass> <!-- Entry point for the application -->
+                            <mainClass>com.example.YourMainClass</mainClass> <!-- Change to your main class -->
                         </manifest>
                     </archive>
                 </configuration>
