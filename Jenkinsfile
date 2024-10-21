@@ -26,8 +26,6 @@ pipeline {
             steps {
                 script {
                     // Deploy the WAR file
-                    sh "sudo chmod 755 /home/ubuntu"
-                    sh "sudo chown jenkins:jenkins /home/ubuntu"
                     sh "cp target/hello-world-app-1.0-SNAPSHOT.war ${DEPLOY_DIR}/hello-world-app.war"
                 }
             }
