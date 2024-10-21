@@ -1,9 +1,9 @@
 pipeline {
     agent any
     environment {
-        GIT_REPO = 'https://your-git-repo-url.git' // Change to your Git repository URL
-        DEPLOY_DIR = '/path/to/deploy' // Path to deploy WAR file (e.g., Tomcat webapps directory)
-        PORT = '8080' // Port to run the application
+        GIT_REPO = 'https://github.com/swatigadagi/Demo.git' // Change to your Git repository URL
+        DEPLOY_DIR = '/home/ubuntu' // Path to deploy WAR file (e.g., Tomcat webapps directory)
+        PORT = '8081' // Port to run the application
     }
     stages {
         stage('Clone Repository') {
