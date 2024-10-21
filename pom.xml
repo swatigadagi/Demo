@@ -27,4 +27,21 @@
                     <source>1.8</source>
                     <target>1.8</target>
                 </configuration>
-            </pl
+            </plugin>
+            <!-- Add a plugin for executing the jar -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>3.2.0</version>
+                <configuration>
+                    <archive>
+                        <manifest>
+                            <addClasspath>true</addClasspath>
+                            <mainClass>com.example.HelloWorldServer</mainClass> <!-- Entry point for the application -->
+                        </manifest>
+                    </archive>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</project>
