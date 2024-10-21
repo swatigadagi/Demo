@@ -16,25 +16,16 @@ pipeline {
         stage('Build Application') {
             steps {
                 script {
-                    sh 'pwd'
                     // Run Maven to build the project
                     sh 'mvn clean package'
                 }
             }
         }
-        stage('Deploy Application') {
+        stage('Run Application') {
             steps {
                 script {
-                    // Deploy the WAR file
-                    sh "cp target/hello-world-app-1.0-SNAPSHOT.war ${DEPLOY_DIR}/hello-world-app.war"
-                }
-            }
-        }
-        stage('Start Web Server') {
-            steps {
-                script {
-                    // Start the web server (Tomcat)
-                    sh "/path/to/tomcat/bin/startup.sh"
+                    // Run the application
+                    sh "java -jar target/hello-world-app-1.0-SNAPSHOT.jar ${DEPLOY_DIR}/hello-world-app.war"
                 }
             }
         }
