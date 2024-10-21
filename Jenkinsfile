@@ -25,7 +25,7 @@ pipeline {
             steps {
                 script {
                     // Run the application
-                    sh "java -jar target/hello-world-app-1.0-SNAPSHOT.jar ${DEPLOY_DIR}/hello-world-app.war"
+                    sh "java -jar target/hello-world-app-1.0-SNAPSHOT.jar &"
                 }
             }
         }
