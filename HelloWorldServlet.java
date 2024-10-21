@@ -1,18 +1,30 @@
 package com.example;
 
-import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.io.PrintWriter;
+import java.io.OutputStream;
+import java.net.InetSocketAddress;
+import com.sun.net.httpserver.HttpServer;
+import com.sun.net.httpserver.HttpHandler;
+import com.sun.net.httpserver.HttpExchange;
 
-@WebServlet("/hello")
-public class HelloWorldServlet extends HttpServlet {
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        response.setContentType("text/html");
-        PrintWriter out = response.getWriter();
-        out.println("<h1>Hello World</h1>");
+public class HelloWorldServer {
+    public static void main(String[] args) throws IOException {
+        // Create an HTTP server on port 8080
+        HttpServer server = HttpServer.create(new InetSocketAddress(8080), 0);
+        server.createContext("/hello", new HelloHandler());
+        server.setExecutor(null); // creates a default executor
+        server.start();
+        System.out.println("Server started at http://localhost:8080/hello");
+    }
+
+    static class HelloHandler implements HttpHandler {
+        @Override
+        public void handle(HttpExchange exchange) throws IOException {
+            String response = "<h1>Hello World</h1>";
+            exchange.sendResponseHeaders(200, response.length());
+            OutputStream os = exchange.getResponseBody();
+            os.write(response.getBytes());
+            os.close();
+        }
     }
 }
